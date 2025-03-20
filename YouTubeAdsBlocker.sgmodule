@@ -1,6 +1,7 @@
 #!name=YouTube Ads Blocker
 #!desc=Block YouTube Ads (Web Priority)
 #!author=pearce
+!category=Adblock
 #!homepage=https://github.com/yourrepo
 
 [MITM]
