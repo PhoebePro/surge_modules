@@ -9,7 +9,7 @@ hostname = *.googlevideo.com, *.youtube.com, *.youtube-nocookie.com, *.ytimg.com
 
 [Script]
 # 拦截带有 adbreak 字段的响应，移除广告信息
-youtube_ads_response_rewrite = type=http-response,pattern=https://www.youtube.com/youtubei/v1/player.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/PhoebePro/surge_modules/refs/heads/main/youtube-ads-filter.js
+youtube_ads_response_rewrite = type=http-response,pattern=https://www.youtube.com/youtubei/v1/player.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/PhoebePro/surge_modules/refs/heads/main/js/youtube-ads-filter.js
 
 [Rule]
 # 屏蔽广告相关的域名
