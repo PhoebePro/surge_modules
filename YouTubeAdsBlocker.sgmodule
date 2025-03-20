@@ -1,0 +1,25 @@
+#!name=YouTube Ads Blocker
+#!desc=Block YouTube Ads (Web Priority)
+#!author=pearce
+#!homepage=https://github.com/yourrepo
+
+[MITM]
+hostname = *.googlevideo.com, *.youtube.com, *.youtube-nocookie.com, *.ytimg.com, *.googleusercontent.com
+
+[Script]
+# 拦截带有 adbreak 字段的响应，移除广告信息
+youtube_ads_response_rewrite = type=http-response,pattern=https://www.youtube.com/youtubei/v1/player.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/PhoebePro/surge_modules/refs/heads/main/youtube-ads-filter.js
+
+[Rule]
+# 屏蔽广告相关的域名
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googleads.g.doubleclick.net,REJECT
+DOMAIN-SUFFIX,pagead2.googlesyndication.com,REJECT
+DOMAIN-SUFFIX,yt.adfetch.com,REJECT
+DOMAIN-SUFFIX,youtubeadservice.com,REJECT
+DOMAIN-SUFFIX,ad.doubleclick.net,REJECT
+DOMAIN-KEYWORD=ad.doubleclick,REJECT
+
+# 阻断广告视频流请求
+URL-REGEX,^https?:\/\/rr\d+---sn-.*\.googlevideo\.com\/.*&oad,REJECT
+URL-REGEX,^https?:\/\/.*\.googlevideo\.com\/videoplayback\?.*&(oad|ctier)=,REJECT
